@@ -28,12 +28,15 @@ public class Meny {
 		try { int nage =Integer.parseInt(tage);
 		
 			if(nage>=18) {
-				//System.out.println("");
+				
 				test = true;
+				
 				}
 				else if(nage<18)
-				System.out.println("Underage");
-			}
+				System.out.println("Underage"); 
+				test=false;
+				
+		}
 		
 		catch(Exception e) {
 			System.out.println("* * * * NUMBERS ONLY * * * * ");
@@ -44,46 +47,93 @@ public class Meny {
 	
  
 	
-	
+	public void alreadyUser() {
+		
+		
+		System.out.println("Press 1 if u have a username. If u dont have press 0");
+		String tuser = input.next();
+		
+		try { int nuser =Integer.parseInt(tuser);
+			if(nuser>0) {
+				to_login();
+				
+				
+			}
+			else if(nuser<1)
+				
+				System.out.println("\n\nNo account");
+				create_login();
+		}
+		catch (Exception e) {
+			System.out.println("Press zero for creating an account or a number greater  then 0 for havin one already");
+			alreadyUser();
+		}
+		
+		
+	}
 	
 	
 	public void  create_login() {
 		
 		
+		System.out.println("\nPlease register a Username");
+		create_username=input.next();
+		System.out.println("Please register a Password");
+		create_password=input.next();
+		System.out.println("* * * Successful registration * * *");
+		to_login();
 			
-		//String create_username;
-		//String create_password;
-		
-		
-			System.out.println("Please register a Username");
-			create_username=input.next();
-			System.out.println("Please register a Password");
-			create_password=input.next();
 	
 	}
 	
 	public void to_login() {
 			
-			//to_login
-		
+			//LOGIN
+			
+			
+			System.out.println("\n\nGo ahead login");
+			String n=null;
 			String login_username;
 			System.out.println("\nEnter your Username");
 			login_username=input.next();
 			String login_password;
 			System.out.println("\nEnter your Password");
 			login_password=input.next();
+			System.out.println("\n" + "Username : "+ create_username + "\nPassword :"+ create_password);
 			
-			if(create_username.equals(login_username) && create_password.equals(login_password)) {
-				System.out.println("* * * * Login Successful * * * * loading 100 %");
-				test=true;
+			try {int nullogin=Integer.parseInt(login_username);
+				int nullogin2=Integer.parseInt(login_password);
+			
+			
 				
-				}
+			if (create_username.equals(login_username) && create_password.equals(login_password)) 
 			
-			else 
-				{test=false;
-				System.out.println("invalid Username or password");
-				}
+			{
 			
+			System.out.println("Login successful");
+			//test=true;
+			login_successful();
+			
+			}
+			else
+				System.out.println("Invalid Username");
+				to_login();
+			}
+		catch(Exception e) {
+			//if(create_username==n && create_password==n)
+			
+			
+		}
+		
+	
+	}
+	public void login_successful() {
+		
+		// Spelet är igång
+		
+		System.out.println("\n * * * G A M E T I M E * * * ");
+	
+	
 	}
  
 		public static void main(String[] args) {
@@ -91,25 +141,36 @@ public class Meny {
 		Meny meny= new Meny();
 		meny.age();
 		if (meny.test=true) {
-			meny.create_login();
-			System.out.println("Successful registration");
-		}
-		
-		System.out.println("\n\nGo ahead login");
-		
-		
-		if(meny.test=true) {
-			meny.to_login();
-			//System.out.println("* * * * Login Successful * * * * loading 100 %");
+			meny.alreadyUser();
+			
 			
 		}
-		
+			
+		if (meny.test=true) {
+			
+			
+			
 			
 		}
+		if (meny.test=true)
+			meny.login_successful();
 		
-  
-	
+		
+		
+		
 	}
-
+		
+		
+		
+		 
+		
+			
+			
+		
+			
+			
+			
+			
+		}
 
 
