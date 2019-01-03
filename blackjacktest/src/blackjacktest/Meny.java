@@ -1,6 +1,6 @@
 package blackjacktest;
 
-import java.io.IOException;
+//import java.io.IOException;
 import java.util.Scanner;
 
 public class Meny {
@@ -87,7 +87,7 @@ public class Meny {
 			
 			// -----  Header -----------
 			System.out.println("\n\n           * * * Rules * * * \n\n");
-			System.out.println("Black Jack is played with one deck of 52 cards."
+			System.out.println("Black Jack is played with one deck consisting of 52 cards."
 					+ "\nACES can be counted as 1 or 11 points tens and face cards count as ten points."
 					+ "\nCards from 2-9 have the same value as shown on the card."
 					+ " \nYour goal is to get Black Jack."
