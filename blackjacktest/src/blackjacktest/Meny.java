@@ -1,6 +1,6 @@
 package blackjacktest;
 
-//import java.io.IOException;
+
 import java.util.Scanner;
 
 public class Meny {
@@ -83,6 +83,8 @@ public class Meny {
 			}
 			
 	}
+		
+	
 		public void rules() {
 			
 			// -----  Header -----------
