@@ -12,9 +12,9 @@ public class Meny {
 		
 		public void age() 
 		{
-		System.out.println("Enter your age : ");		
+		System.out.println("\nEnter your age : ");		
 		
-		tage=input.next();
+		 String tage=input.next();
 		
 		try { 
 				int nage =Integer.parseInt(tage);
@@ -26,15 +26,20 @@ public class Meny {
 				}
 				else if(nage<18)				
 						{
-							throw new Exception();
+							//throw new Exception();
+						
+							System.out.println("    +18 ONLY     " );
+							 
+							System.exit(0);
 						}
 
 			}		
 			catch(Exception e) 
 			{
-				System.out.println("    +18 ONLY     " );
-				//age();  
-				System.exit(0);
+				System.out.println("Numbers Only!");
+				age();	
+				
+				
 			}	
 		}
 
@@ -47,10 +52,10 @@ public class Meny {
 		//String create_username;
 		//String create_password;
 		
-		
-			System.out.println("Please register a Username");
+			
+			System.out.println("\nPlease register a Username");
 			create_username=input.next();
-			System.out.println("Please register a Password");
+			System.out.println("\nPlease register a Password");
 			create_password=input.next();
 	
 	}
@@ -73,10 +78,24 @@ public class Meny {
 			
 			else 
 			{
-				System.out.println("invalid Username or password");
+				System.out.println("invalid Username or Password");
+				to_login();
 			}
 			
 	}
+		public void rules() {
+			
+			// -----  Header -----------
+			System.out.println("\n\n           * * * Rules * * * \n\n");
+			System.out.println("Black Jack is played with one deck of 52 cards."
+					+ "\nACES can be counted as 1 or 11 points tens and face cards count as ten points."
+					+ "\nCards from 2-9 have the same value as shown on the card."
+					+ " \nYour goal is to get Black Jack."
+					+ "\nBlack Jack is the highest hand and it consists of an ACE and any 10 point card.");
+		}
+	
+	
+	
  
 		public static void main(String[] args) 
 		{
@@ -87,6 +106,7 @@ public class Meny {
 			meny.create_login();
 			System.out.println("Successful registration");
 			meny.age();
+			meny.rules();
 
 			
 		}
