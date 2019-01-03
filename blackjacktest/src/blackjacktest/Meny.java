@@ -26,7 +26,7 @@ public class Meny {
 				}
 				else if(nage<18)				
 						{
-							//throw new Exception();
+							
 						
 							System.out.println("    +18 ONLY     " );
 							 
