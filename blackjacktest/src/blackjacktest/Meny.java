@@ -123,7 +123,7 @@ public class Meny {
 			
 					
 	
-		}//While loop close brackets
+		    }//While loop close brackets
 				
 				return approved;
 				
@@ -183,4 +183,4 @@ public class Meny {
 		
   
 	
-	} // Meny class close bracket
+} // Meny class close bracket
