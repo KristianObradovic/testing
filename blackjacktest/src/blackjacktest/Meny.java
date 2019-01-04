@@ -18,6 +18,8 @@ public class Meny {
 		
 		boolean approved= false;
 		
+		
+		
 		public boolean age() {
 		
 		System.out.println("\nEnter your age : ");		
