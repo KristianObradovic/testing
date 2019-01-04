@@ -11,11 +11,11 @@ public class Game {
 		Scanner inp = new Scanner(System.in);
 		
 		boolean menu = true;
-		System.out.println("Welcome to    B l a c k - J a c k    Casino ( 18 + ) ");
-		while(menu);
-		meny.age();
-		if(meny.approved=true)
 		
+		while(menu);
+		System.out.println("Welcome to    B l a c k - J a c k    Casino ( 18 + ) ");
+		System.out.println("test");
+		meny.age();
 		
 		System.out.println("What would you like to do?/n[1] Log in/n[2] Create user");
 		String logchoice = inp.next();
@@ -34,7 +34,6 @@ public class Game {
 		catch (Exception e) {
 			System.out.println("Choice out of range. Plase try again");
 		}
-		
+	inp.close();	
 	}
-
 }
