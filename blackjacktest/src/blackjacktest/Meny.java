@@ -60,7 +60,7 @@ public class Meny {
 	
 	public void create_login() {
 		
-	//		* * * Get Username & Password * * *			
+	//		* * * Get Username & Password * * *		
 			
 			System.out.println("\nPlease register a Username");
 			create_username=input.next();
@@ -125,7 +125,7 @@ public class Meny {
 	
 		public void rules() {
 			
-			// -----  Header -----------
+			// -----  Header -----
 			
 			System.out.println("\n\n           * * * Rules * * * \n\n");
 			System.out.println("Black Jack is played with one deck consisting of 52 cards."
