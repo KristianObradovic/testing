@@ -58,11 +58,9 @@ public class Meny {
 	
 	
 	
-	public void  create_login() {
+	public void create_login() {
 		
-		
-
-		
+	//		* * * Get Username & Password * * *			
 			
 			System.out.println("\nPlease register a Username");
 			create_username=input.next();
@@ -88,8 +86,6 @@ public class Meny {
 			System.out.println("\nEnter your Password");
 			
 			login_password=input.next();
-			
-			
 				
 			if(create_username.equals(login_username) && create_password.equals(login_password)) { 
 			
@@ -104,9 +100,7 @@ public class Meny {
 				// * * * Threee Chances * * *
 				
 				System.out.println("\nInvalid Username OR Password");
-				
-				
-					chance++;
+				chance++;
 				 
 				if ( chance == 3 ) {
 					System.out.println("\n\nAccess denied! ");
@@ -117,14 +111,8 @@ public class Meny {
 					System.out.println("\nYOU ONLY HAVE ONE MORE CHANCE");
 					
 				}
-				
-				
-				
 			}
 				
-			
-					
-	
 		    }//While loop close brackets
 				
 				return approved;
