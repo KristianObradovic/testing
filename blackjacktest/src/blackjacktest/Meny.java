@@ -32,7 +32,7 @@ public class Meny {
 				if( nage >= 18 ) {
 					
 					approved=true;
-					
+					System.out.println("Successful registration");
 				}
 				else if( nage < 18 ) {
 							
@@ -66,7 +66,7 @@ public class Meny {
 			create_username=input.next();
 			System.out.println("\nPlease register a Password");
 			create_password=input.next();
-			System.out.println("Successful registration");
+			//System.out.println("Successful registration");
 			
 	}
 	
@@ -139,16 +139,19 @@ public class Meny {
 					+ "\nYou can always ask the dealer for more cards as long as you under 21 points."
 					+ "\nIf you get more then 21 points you will loose");
 		
+			
+		
 		} // rules close bracket
 	
 	
 	
  
-		public static void main(String[] args) {
+		/*public static void main(String[] args) {
 		
 			System.out.println("Welcome to    B l a c k - J a c k    Casino ( 18 + ) ");
 		
 			Meny meny = new Meny();
+			
 			
 			meny.age();
 			
@@ -163,13 +166,13 @@ public class Meny {
 			if( meny.approved=true ) {
 				
 				meny.rules();
-			
+				
 			}
 			
 			
 			
 			
-		} // main close bracket
+		} // main close bracket*/
 		
   
 	
