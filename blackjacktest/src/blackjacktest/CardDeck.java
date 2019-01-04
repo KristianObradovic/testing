@@ -34,5 +34,3 @@ public class CardDeck {
 	        dealtcards = 0;
 	    }	    
 }
-
-
