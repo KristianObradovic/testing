@@ -11,11 +11,11 @@ public class Game {
 		Meny meny = new Meny();
 		
 		
-		//meny.age();
+		
 		meny.create_login();
 		if(meny.approved=true){
 		
-		//meny.create_login();
+		
 			meny.age();
 		}
 		

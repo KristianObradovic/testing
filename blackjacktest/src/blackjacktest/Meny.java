@@ -66,7 +66,7 @@ public class Meny {
 			create_username=input.next();
 			System.out.println("\nPlease register a Password");
 			create_password=input.next();
-			//System.out.println("Successful registration");
+			
 			
 	}
 	
