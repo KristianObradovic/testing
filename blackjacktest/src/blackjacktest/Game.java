@@ -1,10 +1,8 @@
 package blackjacktest;
 
-<<<<<<< HEAD
 import java.util.Scanner;
 
-=======
->>>>>>> branch 'master' of https://github.com/KristianObradovic/testing.git
+
 public class Game {
     Player player = new Player();
     Dealer dealer = new Dealer();
@@ -15,7 +13,6 @@ public class Game {
     
     public void play(){
 
-<<<<<<< HEAD
        while(playing){
     	   boolean play = true;
     	   while (play) {
@@ -207,27 +204,3 @@ public class Game {
        game.play();
     }
 }
-=======
-	public static void main(String[] args) {
-
-		System.out.println("Welcome to    B l a c k - J a c k    Casino ( 18 + ) ");
-
-		Meny meny = new Meny();
-
-		meny.create_login();
-		if (meny.approved = true) {
-
-			meny.age();
-		}
-
-		meny.to_login();
-		if (meny.approved = true) {
-
-			meny.rules();
-
-		}
-
-	} // main close bracket
-
-}
->>>>>>> branch 'master' of https://github.com/KristianObradovic/testing.git
