@@ -197,10 +197,5 @@ public class Game {
 
     public void Draw(){
         System.out.println("Its a draw! You loose.");
-    }
-
-    public static void main(String[] args){
-       Game game = new Game();
-       game.play();
-    }
+    }    
 }
