@@ -142,6 +142,21 @@ public class Meny {
 			
 		
 		} // rules close bracket
+	public void Switch() {
+		System.out.println("To log in press 1 \n\n Create user press 2 ");
+		int operator = input.nextInt();
+		switch(operator) {
+		case 1:
+			to_login();
+			break;
+		case 2:
+			create_login();
+			break;
+		default:
+			System.out.println("something went wrong");
+			Switch();
+		}
+	}
 	
 	
 	
