@@ -9,16 +9,16 @@ public class Game {
     private int dealerStop = 17;
     public static int blackJack = 21;
     
-    
-    
+    Scanner scanner = new Scanner(System.in);
+	String choice = "";
+	String move = "";
+	
     public void play(){
-    	boolean playing = true;
-    	while(playing){
+    	
     	   boolean play = true;
     	   while (play) {
     		  
-    	   Scanner scanner = new Scanner(System.in);
-    	   String choice = "";
+    	   
            dealer.dealHands(player);
            showHiddenHand();
 
@@ -63,7 +63,8 @@ public class Game {
            		choice = scanner.nextLine();
            		if(choice.equals("n")) {
            			System.out.println("Thank you for playing!");
-           			playing = false;
+           			scanner.close();
+           			return;
            			}
            		else if(choice.equals("y")) {
            			player.getHand().clear();
@@ -76,12 +77,10 @@ public class Game {
            	}
     	   }	
        }
-    }
+    
 
     public void takePlayerTurn(){
-        Scanner scanner = new Scanner(System.in);
-        String move = "";
-
+       
         int score = player.getHand().getScore();
         printPlayerHand();
 
