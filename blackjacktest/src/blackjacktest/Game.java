@@ -2,199 +2,182 @@ package blackjacktest;
 
 import java.util.Scanner;
 
-
 public class Game {
-    Player player = new Player();
-    Dealer dealer = new Dealer();
-    private int dealerStop = 17;
-    public static int blackJack = 21;
-    
-    Scanner scanner = new Scanner(System.in);
+	Player player = new Player();
+	Dealer dealer = new Dealer();
+	private int dealerStop = 17;
+	public static int blackJack = 21;
+	Scanner scanner = new Scanner(System.in);
 	String choice = "";
 	String move = "";
-	
-    public void play(){
-    	
-    	   boolean play = true;
-    	   while (play) {
-    		  
-    	   
-           dealer.dealHands(player);
-           showHiddenHand();
 
-           takePlayerTurn();
-           Hand playersHand = player.getHand();
+	public void play() {
+		boolean play = true;
+		while (play) {
+			dealer.dealHands(player);
+			showHiddenHand();
+			takePlayerTurn();
+			Hand playersHand = player.getHand();
 
-           if(playersHand.isBlackjack()){
-        	   System.out.println("Blackjack! You win");
-        	   System.out.println("");
-           }
-           else if(playersHand.bust() == false){
-               takeDealerTurn();
+			if (playersHand.isBlackjack()) {
+				System.out.println("Blackjack! You win");
+				System.out.println("");
+			} else if (playersHand.bust() == false) {
+				takeDealerTurn();
 
-               if(isDraw() == true){
-                   Draw();
-               }
-               else if(hasWon() == true){
-                   Win();
-               } 
-               else{
-                   System.out.println("You've lost!");
-                   System.out.println("");
-                   try {
+				if (isDraw() == true) {
+					Draw();
+				} else if (hasWon() == true) {
+					Win();
+				} else {
+					System.out.println("You've lost!");
+					System.out.println("");
+					try {
+						Thread.sleep(300);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			} else {
+				System.out.println("You've lost!");
+				System.out.println("");
+				try {
+					Thread.sleep(300);
+				} catch (InterruptedException e) {
+
+					e.printStackTrace();
+				}
+			}
+			while (true) {
+				System.out.println("Would you like to play again? (y)es or (n)o");
+				choice = scanner.nextLine();
+				if (choice.equals("n")) {
+					System.out.println("Thank you for playing!");
+					scanner.close();
+					return;
+				} else if (choice.equals("y")) {
+					player.getHand().clear();
+					dealer.getHand().clear();
+					break;
+				} else
+					System.out.println("Invalid input. Try again");
+				continue;
+			}
+		}
+	}
+
+	public void takePlayerTurn() {
+
+		int score = player.getHand().getScore();
+		printPlayerHand();
+
+		while (score < blackJack) {
+			System.out.println("Enter your next move (h)it (s)tand");
+
+			move = scanner.nextLine();
+
+			if (move.equals("h")) {
+				try {
 					Thread.sleep(300);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-               }
-           }
-           else {
-        	   System.out.println("You've lost!");
-        	   System.out.println("");
-        	   try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				
-				e.printStackTrace();
-			}
-           }
-           while (true) {
-        	   System.out.println("Would you like to play again? (y)es or (n)o");
-           		choice = scanner.nextLine();
-           		if(choice.equals("n")) {
-           			System.out.println("Thank you for playing!");
-           			scanner.close();
-           			return;
-           			}
-           		else if(choice.equals("y")) {
-           			player.getHand().clear();
-           			dealer.getHand().clear();
-           			break;
-           			}
-           		else
-           			System.out.println("Invalid input. Try again");
-           			continue;
-           	}
-    	   }	
-       }
-    
-
-    public void takePlayerTurn(){
-       
-        int score = player.getHand().getScore();
-        printPlayerHand();
-
-        while (score < blackJack){
-            System.out.println("Enter your next move (h)it (s)tand");
-
-            move = scanner.nextLine();
-
-            if (move.equals("h")) {
-            	try {
+				player.getHand().add(dealer.dealCard());
+			} else if (move.equals("s")) {
+				try {
 					Thread.sleep(300);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-                player.getHand().add(dealer.dealCard());
-            }
-            else if (move.equals("s")) {
-            	try {
-					Thread.sleep(300);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-                System.out.println("_______________________");
-                break;
-            }
-            
-            score = player.getHand().getScore();
-            printPlayerHand();
-        }
-    }
+				System.out.println("_______________________");
+				break;
+			}
 
-    public void takeDealerTurn(){
-        printDealerHand();
+			score = player.getHand().getScore();
+			printPlayerHand();
+		}
+	}
 
-        int value = dealer.getHand().getScore();
+	public void takeDealerTurn() {
+		printDealerHand();
 
-        if(value > dealerStop){
-        	try {
+		int value = dealer.getHand().getScore();
+
+		if (value > dealerStop) {
+			try {
 				Thread.sleep(300);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-            printDealerHand();
-        }
+			printDealerHand();
+		}
 
-        while (value < dealerStop){
-            dealer.getHand().add(dealer.dealCard());
-            value = dealer.getHand().getScore();
-            System.out.println("Dealer hit");
-            try {
+		while (value < dealerStop) {
+			dealer.getHand().add(dealer.dealCard());
+			value = dealer.getHand().getScore();
+			System.out.println("Dealer hit");
+			try {
 				Thread.sleep(300);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-            printDealerHand();
-        }
+			printDealerHand();
+		}
 
-    }
+	}
 
-    public void showHiddenHand(){
-        System.out.println("Dealer's hand : " + dealer.getHand().hiddenHand());
-        System.out.println("------------------------");
-    }
+	public void showHiddenHand() {
+		System.out.println("Dealer's hand : " + dealer.getHand().hiddenHand());
+		System.out.println("------------------------");
+	}
 
-    public void printDealerHand(){
-            System.out.println("Dealer's hand : " + dealer.getHand().toString());
-            System.out.println("Dealer's score: " + dealer.getHand().getScore());
-            System.out.println("------------------------");
-    }
+	public void printDealerHand() {
+		System.out.println("Dealer's hand : " + dealer.getHand().toString());
+		System.out.println("Dealer's score: " + dealer.getHand().getScore());
+		System.out.println("------------------------");
+	}
 
-    public void printPlayerHand(){
-        System.out.println(player.getName() + "'s hand : " + player.getHand().toString());
-        System.out.println(player.getName() + "'s score: " + player.getHand().getScore());
-        System.out.println("_______________________");
-    }
+	public void printPlayerHand() {
+		System.out.println(player.getName() + "'s hand : " + player.getHand().toString());
+		System.out.println(player.getName() + "'s score: " + player.getHand().getScore());
+		System.out.println("_______________________");
+	}
 
-    public boolean isDraw(){
-        boolean draw = false;
+	public boolean isDraw() {
+		boolean draw = false;
 
-        int playerScore = player.getHand().getScore();
-        int dealerScore = dealer.getHand().getScore();
+		int playerScore = player.getHand().getScore();
+		int dealerScore = dealer.getHand().getScore();
 
-        if (playerScore <= blackJack && dealerScore <= blackJack && playerScore == dealerScore) {
-            draw = true;
-        }
-        else if( playerScore > blackJack && dealerScore > blackJack){
-            draw = true;
-        }
+		if (playerScore <= blackJack && dealerScore <= blackJack && playerScore == dealerScore) {
+			draw = true;
+		} else if (playerScore > blackJack && dealerScore > blackJack) {
+			draw = true;
+		}
 
-        return draw;
-    }
+		return draw;
+	}
 
-    public boolean hasWon(){
-        boolean win = false;
+	public boolean hasWon() {
+		boolean win = false;
 
-        int playerScore = player.getHand().getScore();
-        int dealerScore = dealer.getHand().getScore();
+		int playerScore = player.getHand().getScore();
+		int dealerScore = dealer.getHand().getScore();
 
-        if (playerScore <= blackJack && dealerScore <= blackJack && playerScore > dealerScore) {
-            win = true;
-        }
-        else if( playerScore <= blackJack && dealerScore > blackJack){
-            win = true;
-        }
+		if (playerScore <= blackJack && dealerScore <= blackJack && playerScore > dealerScore) {
+			win = true;
+		} else if (playerScore <= blackJack && dealerScore > blackJack) {
+			win = true;
+		}
 
-        return win;
-    }
+		return win;
+	}
 
+	public void Win() {
+		System.out.println("You've won!");
+	}
 
-    public void Win(){
-        System.out.println("You've won!");
-    }
-
-    public void Draw(){
-        System.out.println("Its a draw! You loose.");
-    }    
+	public void Draw() {
+		System.out.println("Its a draw! You loose.");
+	}
 }
