@@ -6,8 +6,5 @@ public class BlackJack {
 		// TODO Auto-generated method stub
 		Game game = new Game();
 		game.play();
-		
-
 	}
-
 }
