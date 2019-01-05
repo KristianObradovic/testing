@@ -1,89 +1,86 @@
 package blackjacktest;
 
 public class Hand {
-    private cards[] hand = new cards[11];
+	private cards[] hand = new cards[11];
 
-    public void add(cards card){
-        for(int i = 0; i < hand.length; i++){
-            if(hand[i] == null){
-                hand[i] = card;
-                break;
-            }
-        }
-    }
+	public void add(cards card) {
+		for (int i = 0; i < hand.length; i++) {
+			if (hand[i] == null) {
+				hand[i] = card;
+				break;
+			}
+		}
+	}
 
-    public cards get(int index){
-        cards card = null;
-        if(index >= 0 && index < hand.length){
-            card = hand[index];
-        }
-        return card;
-    }
+	public cards get(int index) {
+		cards card = null;
+		if (index >= 0 && index < hand.length) {
+			card = hand[index];
+		}
+		return card;
+	}
 
-    public int getScore(){
-        int value = 0;
-        int aces = 0;
+	public int getScore() {
+		int value = 0;
+		int aces = 0;
 
-        for(cards ace: hand){
-            if(ace != null){
-                if(ace.getName().equals("Ace")){
-                    aces++;
-                }
-                value += ace.getValue();
-            }
-            else{
-                break;
-            }
-        }
+		for (cards ace : hand) {
+			if (ace != null) {
+				if (ace.getName().equals("Ace")) {
+					aces++;
+				}
+				value += ace.getValue();
+			} else {
+				break;
+			}
+		}
 
-        if(value >  21){
-            while(aces > 0){
-                value -= 10;
-                aces--;
-            }
-        }
+		if (value > 21) {
+			while (aces > 0) {
+				value -= 10;
+				aces--;
+			}
+		}
 
-        return value;
-    }
+		return value;
+	}
 
-    public String hiddenHand(){
-        return hand[0].getName() + " Hidden";
-    }
+	public String hiddenHand() {
+		return hand[0].getName() + " Hidden";
+	}
 
-    public boolean isBlackjack(){
-        if ( hand[0].getValue() + hand[1].getValue() == Game.blackJack){
-            return true;
-        }
+	public boolean isBlackjack() {
+		if (hand[0].getValue() + hand[1].getValue() == Game.blackJack) {
+			return true;
+		}
 
-        return false;
-    }
+		return false;
+	}
 
-    public boolean bust(){
-        boolean bust = false;
+	public boolean bust() {
+		boolean bust = false;
 
-        if(getScore() >  Game.blackJack){
-            bust = true;
-        }
-        return bust;
-    }
+		if (getScore() > Game.blackJack) {
+			bust = true;
+		}
+		return bust;
+	}
 
-    public String toString(){
-        StringBuilder handText = new StringBuilder();
-        for(cards c: hand){
-            if(c != null){
-                handText.append(c.getName() + " ");
-            }
-            else{
-                break;
-            }
-        }
+	public String toString() {
+		StringBuilder handText = new StringBuilder();
+		for (cards c : hand) {
+			if (c != null) {
+				handText.append(c.getName() + " ");
+			} else {
+				break;
+			}
+		}
 
-        return handText.toString();
-    }
+		return handText.toString();
+	}
 
-    public void clear(){
-        hand = new cards[11];
-    }
+	public void clear() {
+		hand = new cards[11];
+	}
 
 }
-

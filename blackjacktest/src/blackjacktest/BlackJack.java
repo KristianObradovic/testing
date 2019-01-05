@@ -8,8 +8,5 @@ public class BlackJack {
 		database.dbsql();
 		Game game = new Game();
 		game.play();
-		
-
 	}
-
 }
