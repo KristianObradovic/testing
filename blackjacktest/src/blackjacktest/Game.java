@@ -9,11 +9,11 @@ public class Game {
     private int dealerStop = 17;
     public static int blackJack = 21;
     
-    boolean playing = true;
+    
     
     public void play(){
-
-       while(playing){
+    	boolean playing = true;
+    	while(playing){
     	   boolean play = true;
     	   while (play) {
     		  
