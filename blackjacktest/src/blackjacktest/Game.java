@@ -18,7 +18,6 @@ public class Game {
     	   boolean play = true;
     	   while (play) {
     		  
-    	   
            dealer.dealHands(player);
            showHiddenHand();
 
