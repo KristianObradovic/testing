@@ -28,11 +28,12 @@ public class Database {
 	 
 	 * password VARCHAR(30) NOT NULL, 
 	 
-	 * age integer NOT NULL, PRIMARY KEY(id));
+	 * age integer NOT NULL, 
+	 
+	 * PRIMARY KEY(id));
 	 
 	 */
 	
-		
 		
 		Scanner scanner = new Scanner(System.in);
 	  	
@@ -40,10 +41,6 @@ public class Database {
 		
 		boolean approved= false;
 		
-		
-		public boolean dbsql() {
-		
-		Scanner scanner = new Scanner(System.in);
 		
 		PreparedStatement s = null;
 		
@@ -57,21 +54,20 @@ public class Database {
 		
 		String user;
 		
-		
-		
 		String testuser= "";
-		
-		
-		
-		
 		
 		Connection connect = null;
 		
+		String number;
 		
 		
-		int number;
+		public boolean dbsql() {
 		
+			
+		System.out.print("\nPress 1 if you already registered  or"
+				+ "\n\nanother number  if you want to register : ");
 		
+		number=scanner.next();
 	
 		
 		try {
@@ -79,9 +75,11 @@ public class Database {
 			
 		} 
 		
+		
 		catch (Exception e) {
 		
 		e.printStackTrace();
+		
 		
 		}
 		
@@ -102,66 +100,110 @@ public class Database {
 	
 		
 		
+	
+
 		
-		System.out.print("\nPress 1 if you are a customer or 0 if your not a customer : ");
+		try { 
+				int snumber =Integer.parseInt(number);
 		
-		number=scanner.nextInt();
-		
-		
-		if(number==1) {
-		
-			System.out.print("\nEnter your username : ");
+				if( snumber == 1 ) {
+					
+					approved=true;
+					
+				}
+				else {
+					notreg();
+					
+				}
+							
+				
+
+		}		
 			
-			testuser = scanner.next();
-		 
-			try {
-			
-				stmt = connect.createStatement();
-				rs= stmt.executeQuery("SELECT * FROM Player WHERE username='"+ testuser +"';" ); // <-- tilldelar rs detta
+		catch ( Exception e ) {
+				System.out.println("\nNumbers Only!");
+				dbsql();	
+				
+				
+		}	
+		
+		
+				
+		
+		
+			if(number.equals("1")) {
+				System.out.print("\nEnter your username : ");
+		
+				
+		
+				try {
+					
+					testuser = scanner.next();
+					
+					stmt = connect.createStatement();
+					rs= stmt.executeQuery("SELECT * FROM Player WHERE username='"+ testuser +"';" ); // <-- tilldelar rs detta
 				
 					
 					while(rs.next()) {
 	
 							user = rs.getString("username");
 							String passw = rs.getString("password");
+							
 							int age=rs.getInt("age");
-							if(testuser.equals(rs.getString("username"))) {
-								
-								System.out.print("\nExist in the database\n"
-										+ "\nYour information is:\n"
-										+ "\nUsername : " + user + " " + " " + ""
-										+ "\n\nPassword  : " + passw + " "
-										+ "\n"+ "\n"
-										+ "\nAge : "+ age);
-								approved=true;
-							}
-								
-							/*
-							else { 	
+							
+								if(testuser.equals(rs.getString("username"))) {
 									
-								System.out.println("Not found in the database");
-								stmt.close();
-								rs.close();
+									System.out.print("\nExist in the database\n"
+											+ "\nYour information is:\n"
+											
+											+ "\nUsername : " + user + " " + " " + ""
+											
+											+ "\n\nPassword  : " + passw + " "
+											
+											+ "\n"
+											
+											
+											+ "\nAge : "+ age+"\n");
+									
+									approved=true;
+									System.exit(0);
+								}
 								
-							}*/	
-						
-					}
-			}		
-			catch( SQLException e ){
-		
-		
-			
+								
+								
+								else  { 	
+										notreg();
+								
+									
+								}		
+								
+				
+					}	
+					
+					
 			}
+				
+					 
+					
+			catch( SQLException e ){
 					
 				
-		
-		
-		}
-		
+			
+			}
+			
+				
+		}	 
+					
+				return approved;
+
+}	
 		
 	
 		
-		else { 
+	
+	public boolean notreg(){
+		
+		
 		
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
@@ -173,19 +215,7 @@ public class Database {
 			e.printStackTrace();
 			
 			}
-			/*
-			try {
-			//connect = DriverManager.getConnection("jdbc:mysql://localhost/BlackJack1?" + "user=foo&password=bar");
 			
-			} 		
-			
-			
-			catch (Exception e) {
-
-				e.printStackTrace();
-			}
-		
-		*/
 			
 				System.out.println("\nPlease register a Username : ");
 				
@@ -204,26 +234,26 @@ public class Database {
 			try { 
 					int nage =Integer.parseInt(gage);
 			
-					if( nage >= 18 ) {
+						if( nage >= 18 ) {
 						
 						
 					System.out.println("\nSuccessful registration\n");
 					approved = true;
 					
 					
-					}
-					else if( nage < 18 ) {
+						}
+						else if( nage < 18 ) {
 								
 							
 								System.out.println("    +18 ONLY     " );
 								 
 								System.exit(0);
-					}
+						}
 
 			}		
 				
 			catch ( Exception e ) {
-					System.out.println("Numbers Only!");
+					System.out.println("\nNumbers Only!");
 						
 			}
 
@@ -240,15 +270,10 @@ public class Database {
 				s.setString(3, gage);
 				
 				s.executeUpdate();
-				// s.executeUpdate("create table Player (username VARCHAR(30), password VARCHAR(30), age
-				// integer)");
-				// workbench:
-				// use BlackJack1;
-				// create table BlackJack1 (username VARCHAR(30), password VARCHAR(30), age integer);
 
 
 
-			} catch (SQLException e) {
+			} catch ( SQLException e ) {
 
 				e.printStackTrace();
 				scanner.close();
@@ -272,15 +297,16 @@ public class Database {
 		
 
 
-		}
-		
-			return approved;	
 
-} // method boolean dbsql close bracket
+	
 
+			return approved;
 
+	}
 
-
+	
 }
+		
 
+		
 		
