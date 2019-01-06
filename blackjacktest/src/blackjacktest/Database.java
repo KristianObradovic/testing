@@ -1,14 +1,43 @@
+
 package blackjacktest;
 
+
 import java.sql.Connection;
-import java.sql.DriverManager;
+
 import java.sql.PreparedStatement;
+
 import java.sql.SQLException;
+
+import java.sql.Statement;
+
 import java.util.Scanner;
 
+import java.sql.DriverManager;
+
+import java.sql.ResultSet;
 
 public class Database {
 	
+		
+		
+	/* CREATE database BlackJack1;
+	 
+	 * CREATE TABLE Player (id INT NOT NULL AUTO_INCREMENT,
+	 
+	 * username VARCHAR(30) NOT NULL,
+	 
+	 * password VARCHAR(30) NOT NULL, 
+	 
+	 * age integer NOT NULL, PRIMARY KEY(id));
+	 
+	 */
+	
+		
+		
+		Scanner scanner = new Scanner(System.in);
+	  	
+		int chance= 0;
+		
 		boolean approved= false;
 		
 		
@@ -18,50 +47,158 @@ public class Database {
 		
 		PreparedStatement s = null;
 		
+		Statement stmt= null;
+		
+		ResultSet rs= null;
+		
 		String username = "";
 		
 		String password = "";
+		
+		String user;
+		
+		
+		
+		String testuser= "";
+		
+		
+		
+		
 		
 		Connection connect = null;
 		
 		
 		
+		int number;
 		
 		
+		//  * * * Connection * * *  loading 100 % * * *	
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-
-		} catch (ClassNotFoundException e) {
 			
-			e.printStackTrace();
+		} 
+		
+		catch (Exception e) {
+		
+		e.printStackTrace();
+		
 		}
+		
+		
 		try {
-			connect = DriverManager.getConnection("jdbc:mysql://localhost/BlackJack1?" + "user=foo&password=bar");
-		} catch (SQLException e1) {
+		connect = DriverManager.getConnection("jdbc:mysql://localhost/BlackJack1?" + "user=foo&password=bar");
+		
+		
+		
+		
+		} 		
+		
+		
+		catch (SQLException e1) {
 
 			e1.printStackTrace();
 		}
-		{
-			System.out.println("Please register a Username : ");
-			username = scanner.next();
-			System.out.println("\nPlease register a Password : ");
-			password = scanner.next();
-			
-			
-			System.out.println("\nEnter your age : ");
+	
+		// * ******************* ****** **************  *** *****
 		
+		
+		System.out.print("\nPress 1 if you are a customer or 0 if your not a customer : ");
+		
+		number=scanner.nextInt();
+		
+		
+		if(number==1) {
+		
+			System.out.print("\nEnter your username : ");
+			
+			testuser = scanner.next();
+			
+			try {
+			
+				stmt = connect.createStatement();
+				rs= stmt.executeQuery("SELECT * FROM Player WHERE username='"+ testuser +"';" ); // <-- tilldelar rs detta
 				
+					
+					while(rs.next()) {
+	
+							user = rs.getString("username");
+							String passw = rs.getString("password");
+							if(testuser.equals(rs.getString("username"))) {
+								
+								System.out.print("\nUsername " + user + " " + "Exist in the Database " + ""
+										+ "\nThe password is : " + passw + " "
+										+ "\n"+ "\n");
+								approved=true;
+							}
+								
+							/*
+							else { 	
+									
+								System.out.println("Not found in the database");
+								stmt.close();
+								rs.close();
+								
+							}*/	
+						
+					}
+			}		
+			catch( SQLException e ){
+		
+		
+			
+			}
+					
+				
+		
+		
+		}
+		
+		
+	
+		
+		else { 
+		
+			try {
+				Class.forName("com.mysql.cj.jdbc.Driver");
+
+			} 
+			
+			catch (ClassNotFoundException e) {
+			
+			e.printStackTrace();
+			
+			}
+			/*
+			try {
+			//connect = DriverManager.getConnection("jdbc:mysql://localhost/BlackJack1?" + "user=foo&password=bar");
+			
+			} 		
 			
 			
-			String age;
+			catch (Exception e) {
+
+				e.printStackTrace();
+			}
+		
+		*/
 			
-			
-			
-			age=scanner.next();
+				System.out.println("\nPlease register a Username : ");
+				
+				username = scanner.next();
+				
+				System.out.println("\nPlease register a Password : ");
+				
+				password = scanner.next();
+				
+				System.out.println("\nEnter your age : "); 
+				
+				String gage;
+				
+				gage =scanner.next();
 			
 			try { 
-					int nage =Integer.parseInt(age);
+					int nage =Integer.parseInt(gage);
 			
 					if( nage >= 18 ) {
 						
@@ -79,7 +216,7 @@ public class Database {
 								System.exit(0);
 					}
 
-				}		
+			}		
 				
 			catch ( Exception e ) {
 					System.out.println("Numbers Only!");
@@ -96,7 +233,7 @@ public class Database {
 				s = connect.prepareStatement("insert into  BlackJack1.Player values (default,?, ?, ?)");
 				s.setString(1, username);
 				s.setString(2, password);
-				s.setString(3, age);
+				s.setString(3, gage);
 				
 				s.executeUpdate();
 				// s.executeUpdate("create table Player (username VARCHAR(30), password VARCHAR(30), age
@@ -112,20 +249,34 @@ public class Database {
 				e.printStackTrace();
 				scanner.close();
 			}
-		}
-		try {
-			s.close();
-			
-			connect.close();
 		
-		} catch (SQLException e) {
+		
+		
+			try {
+					s.close();
+			
+					connect.close();
+		
+			} 
+		
+			catch (	Exception e	) {
 
-			e.printStackTrace();
+				  e.printStackTrace();
+			}
+		
+			  	
+		
+
+
 		}
 		
-			return approved;
-		}
+			return approved;	
 
-			
-	}
+} // method boolean dbsql close bracket
 
+
+
+
+}
+
+		
