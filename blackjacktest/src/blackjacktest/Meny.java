@@ -142,7 +142,9 @@ public class Meny {
 			
 		
 		} // rules close bracket
-	public void Switch() {
+	
+		/*
+		public void Switch() {
 		System.out.println("To log in press 1 \n\n Create user press 2 ");
 		int operator = input.nextInt();
 		switch(operator) {
@@ -157,7 +159,7 @@ public class Meny {
 			Switch();
 		}
 	}
-	
+	*/
 	
 	
  
