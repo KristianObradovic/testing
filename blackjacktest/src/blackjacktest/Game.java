@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Game {
 	Player player = new Player();
 	Dealer dealer = new Dealer();
-	private int dealerStop = 17;
+	private int dealerStop = 17;	// Where the dealer will stop hitting
 	public static int blackJack = 21;
 	Scanner scanner = new Scanner(System.in);
 	String choice = "";

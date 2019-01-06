@@ -26,7 +26,7 @@ public class Deck {
 		}
 	}
 
-	public cards dealCard() {
+	public cards dealCard() {  // Deal cards
 		cards fCard = cards[0];
 
 		int index = 1;
@@ -53,7 +53,7 @@ public class Deck {
 		}
 	}
 
-	public String toString() {
+	public String toString() {  // return the cardname
 		StringBuilder cardText = new StringBuilder();
 		for (cards card : cards) {
 			if (card != null) {
@@ -67,7 +67,6 @@ public class Deck {
 	public int rNum(int min, int max) {
 		Random rand = new Random();
 
-		// nextInt is normally exclusive of the top value, so add 1 to make it inclusive
 		int randomNum = rand.nextInt((max - min) + 1) + min;
 		return randomNum;
 	}

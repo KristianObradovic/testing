@@ -20,7 +20,7 @@ public class Hand {
         return card;
     }
 
-    public int getScore(){
+    public int getScore(){  // Get score and check if Ace is 1 or 11
         int value = 0;
         int aces = 0;
 
@@ -46,11 +46,11 @@ public class Hand {
         return value;
     }
 
-    public String hiddenHand(){
+    public String hiddenHand(){  // Dealers hidden hand
         return hand[0].getName() + " Hidden";
     }
 
-    public boolean isBlackjack(){
+    public boolean isBlackjack(){  // Blackjack check
         if ( hand[0].getValue() + hand[1].getValue() == Game.blackJack){
             return true;
         }
@@ -58,7 +58,7 @@ public class Hand {
         return false;
     }
 
-    public boolean bust(){
+    public boolean bust(){ // Over 21 check
         boolean bust = false;
 
         if(getScore() >  Game.blackJack){

@@ -28,7 +28,7 @@ public class Dealer {
 		return deck.dealCard();
 	}
 
-	public void dealHands(Player player) {
+	public void dealHands(Player player) { // Deal cards for both player and dealer
 		hand.add(dealCard());
 		hand.add(dealCard());
 		player.getHand().add(dealCard());
