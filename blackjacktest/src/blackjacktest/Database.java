@@ -113,7 +113,7 @@ public class Database {
 			System.out.print("\nEnter your username : ");
 			
 			testuser = scanner.next();
-			
+		 
 			try {
 			
 				stmt = connect.createStatement();
@@ -124,11 +124,15 @@ public class Database {
 	
 							user = rs.getString("username");
 							String passw = rs.getString("password");
+							int age=rs.getInt("age");
 							if(testuser.equals(rs.getString("username"))) {
 								
-								System.out.print("\nUsername " + user + " " + "Exist in the Database " + ""
-										+ "\nThe password is : " + passw + " "
-										+ "\n"+ "\n");
+								System.out.print("\nExist in the database\n"
+										+ "\nYour information is:\n"
+										+ "\nUsername : " + user + " " + " " + ""
+										+ "\n\nPassword  : " + passw + " "
+										+ "\n"+ "\n"
+										+ "\nAge : "+ age);
 								approved=true;
 							}
 								
