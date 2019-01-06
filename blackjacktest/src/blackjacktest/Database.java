@@ -37,7 +37,7 @@ public class Database {
 	  	
 		int chance= 0;
 		
-		boolean approved= false;
+		boolean approved= true;
 		
 		
 		PreparedStatement s = null;
@@ -143,41 +143,34 @@ public class Database {
 				
 					
 					while(rs.next()) {
-	
-							user = rs.getString("username");
-							String passw = rs.getString("password");
-							
-							int age=rs.getInt("age");
-							
-								if(testuser.equals(rs.getString("username"))) {
+						approved=false;
+						user = rs.getString("username");
+						String passw = rs.getString("password");
+						int age=rs.getInt("age");
 									
-									System.out.print("\nExist in the database\n"
-											+ "\nYour information is:\n"
-											
-											+ "\nUsername : " + user + " " + " " + ""
-											
-											+ "\n\nPassword  : " + passw + " "
-											
-											+ "\n"
-											
-											
-											+ "\nAge : "+ age+"\n");
-									
-									approved=true;
-									System.exit(0);
-								}
+						System.out.print("\nExist in the database\n"
+						+ "\nYour information is:\n"
+										
+						+ "\nUsername : " + user + " " + " " + ""
+										
+						+ "\n\nPassword  : " + passw + " "
+										
+						+ "\n"
+						
+						
+						+ "\nAge : "+ age+"\n");
 								
-								
-								
-								else  { 	
-										notreg();
-								
-									
-								}		
-								
-				
-					}	
+						//approved=true;
+						//System.exit(0);
 					
+							
+					}		
+								
+						
+					if(approved==true) {
+						System.out.println(testuser + " was not found in database");
+						
+					}			
 					
 			}
 				
@@ -236,7 +229,7 @@ public class Database {
 						
 						
 					System.out.println("\nSuccessful registration\n");
-					approved = true;
+					//approved = true;
 					
 					
 						}
