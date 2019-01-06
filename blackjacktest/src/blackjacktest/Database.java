@@ -72,7 +72,7 @@ public class Database {
 		int number;
 		
 		
-		//  * * * Connection * * *  loading 100 % * * *	
+	
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -100,7 +100,7 @@ public class Database {
 			e1.printStackTrace();
 		}
 	
-		// * ******************* ****** **************  *** *****
+		
 		
 		
 		System.out.print("\nPress 1 if you are a customer or 0 if your not a customer : ");
@@ -203,7 +203,7 @@ public class Database {
 					if( nage >= 18 ) {
 						
 						
-					System.out.println("Successful registration");
+					System.out.println("\nSuccessful registration\n");
 					approved = true;
 					
 					

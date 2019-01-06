@@ -3,12 +3,18 @@ package blackjacktest;
 public class BlackJack {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Meny Menu = new Meny();
-		Menu.Switch();
+		
+		Meny menu = new Meny();
+		
 		Database database= new Database();
-		database.dbsql();
+		
 		Game game = new Game();
+		
+		database.dbsql();
+		
+		menu.rules();
+		
+		
 		game.play();
 	}
 }
