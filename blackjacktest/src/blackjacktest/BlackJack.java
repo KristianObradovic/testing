@@ -6,11 +6,11 @@ public class BlackJack {
 		
 		Meny menu = new Meny();
 		
-		//Database database= new Database();
+		Database database= new Database();
 		
 		Game game = new Game();
 		
-		//database.dbsql();
+		database.dbsql();
 		
 		menu.rules();
 		
