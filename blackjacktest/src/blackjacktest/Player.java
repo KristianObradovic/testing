@@ -1,7 +1,8 @@
 package blackjacktest;
 
 public class Player {
-	private String name = "Player";
+	Database db = new Database();
+	public String name = "Player";
 	private Hand hand = new Hand();
 
 	public Player() {

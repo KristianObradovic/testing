@@ -4,17 +4,17 @@ public class BlackJack {
 
 	public static void main(String[] args) {
 		
-		//Meny menu = new Meny();
+		Meny menu = new Meny();
 		
-		Database database= new Database();
+		//Database database= new Database();
 		
-		//Game game = new Game();
+		Game game = new Game();
 		
-		database.dbsql();
+		//database.dbsql();
 		
-		//menu.rules();
+		menu.rules();
 		
 		
-		//game.play();
+		game.play();
 	}
 }
