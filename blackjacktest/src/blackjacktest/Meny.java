@@ -137,7 +137,7 @@ public class Meny {
 					+ "\n21 points its the best hand you can get"
 					+ "\nTo be able to get 21 points you need to have a hand that consists of an ACE and any 10 point card."
 					+ "\nYou can always ask the dealer for more cards as long as you under 21 points."
-					+ "\nIf you get more then 21 points you will loose\n\n\n");
+					+ "\nIf you get more then 21 points you will loose\n\n\n\n\n\n");
 		
 			
 		
